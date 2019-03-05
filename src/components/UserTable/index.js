@@ -15,6 +15,10 @@ const StyledUserTable = styled.table`
 `
 
 class UserTable extends React.Component {
+  componentDidMount() {
+    console.log(this.props.userActions.getUserList(20, 0))
+    // this.props.userActions //.getUserList(20, 0)
+  }
   handleClick(e) {
     console.log('event', e)
   }
@@ -54,13 +58,13 @@ class UserTable extends React.Component {
 
 UserTable.propTypes = {
   userActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  users: PropTypes.shape({
+  users: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     isDeleted: PropTypes.bool,
     name: PropTypes.string,
     username: PropTypes.string,
     city: PropTypes.string,
-  }).isRequired,
+  })).isRequired,
 }
 
 const mapStateToProps = state => ({

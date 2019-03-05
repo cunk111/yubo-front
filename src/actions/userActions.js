@@ -1,33 +1,52 @@
-// TODO - migrate to axios, because
 import axios from 'axios'
 
-import {
-  // FETCH_USERS,
-  RECEIVE_USERS,
-} from './actionTypes'
+import { userActions } from './actionTypes'
 
 // TODO - conditionnal dev/prod
 // TODO - move to config file
-const getUrl = () => 'http://localhost:3000'
+const BASE_URL = 'http://localhost:3000'
 
-export function receiveUsers(json) {
-  return { type: RECEIVE_USERS, users: json.users }
-}
+export const receiveUsers = users =>
+  ({ type: userActions.RECEIVE_USERS, users })
 
-export const getUserList = async (qty, offset) => {
-  const url = `${getUrl()}/users/${qty}/${offset}`
+// export const getUserList = async (qty, page) =>
+//   async (dispatch) => {
+//     const res = await axios({
+//       method: 'GET',
+//       url: `${BASE_URL}/users/${qty}/${page}`,
+//       accept: 'application/json',
+//       origin: ['*'],
+//     })
+//     console.log(res);
+//     const json = await res.json
+//     console.log(json)
+//     dispatch(receiveUsers(json))
+//   }
 
-  return async (dispatch) => {
-    const res = await axios.get(url, {
-      method: 'GET',
-      accept: 'application/json',
-      origin: ['*'],
-    })
-    const json = await res.json()
-    dispatch(receiveUsers(json))
-  }
-}
+// export const getUserList = (qty, page) =>
+//   dispatch => fetch({
+//     method: 'GET',
+//     url: `${BASE_URL}/users/${qty}/${page}`,
+//     accept: 'application/json',
+//     origin: ['*'],
+//   })
+//     .then((response) => {
+//       console.log({ response })
+//       return response.json()
+//     })
+//     .then((json) => {
+//       console.log({ json })
+//       return dispatch(receiveUsers(json))
+//     })
 
+export const getUserList = (qty, page) => dispatch => axios({
+  method: 'GET',
+  url: `${BASE_URL}/users/${qty}/${page}`,
+  accept: 'application/json',
+  origin: ['*'],
+})
+  .then(response => response.data)
+  .then(json => dispatch(receiveUsers(json)))
 
 // const api = {
 //   async getUserList(qty, offset) {
