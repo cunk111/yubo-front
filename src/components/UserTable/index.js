@@ -1,5 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import PropTypes from 'prop-types'
+
+import * as userActions from '../../actions/userActions'
 
 const StyledUserTable = styled.table`
   align       : center;
@@ -9,11 +14,12 @@ const StyledUserTable = styled.table`
   margin      : auto;
 `
 
-export default class UserTable extends Component {
+class UserTable extends React.Component {
   handleClick(e) {
     console.log('event', e)
   }
   render() {
+    console.log(this.props)
     try {
       return (
         <StyledUserTable className='table table-hover'>
@@ -27,7 +33,7 @@ export default class UserTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.results.map(elt =>
+            {this.props.users.map(elt =>
               (<tr key={elt.id} onClick={this.handleClick}>
                 <th scope='col'>{elt.id}</th>
                 <th scope='col'>{elt.username}</th>
@@ -45,3 +51,27 @@ export default class UserTable extends Component {
     }
   }
 }
+
+UserTable.propTypes = {
+  userActions: PropTypes.objectOf(PropTypes.func).isRequired,
+  users: PropTypes.shape({
+    id: PropTypes.number,
+    isDeleted: PropTypes.bool,
+    name: PropTypes.string,
+    username: PropTypes.string,
+    city: PropTypes.string,
+  }).isRequired,
+}
+
+const mapStateToProps = state => ({
+  users: state.users,
+})
+
+const mapDispatchToProps = dispatch => ({
+  userActions: bindActionCreators(userActions, dispatch),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserTable)

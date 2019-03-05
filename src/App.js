@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import SearchBar from './components/SearchBar'
+import UserTable from './components/UserTable'
 import './App.css'
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div className='App'>
-        <SearchBar />
+        <UserTable />
       </div>
     )
   }

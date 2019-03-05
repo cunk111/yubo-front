@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import api from '../../modules/api'
-import UserTable from '../UserTable'
+// import api from '../../modules/api'
 
 
 const StyledSearchBar = styled.div`
@@ -77,7 +76,6 @@ export default class SearchBar extends Component {
             <button className='button is-info' onClick={this.handleClick}>
               Add Item
             </button>
-            <UserTable results={this.state.results} className='user-table' />
           </form>
         </StyledSearchBar>
       )

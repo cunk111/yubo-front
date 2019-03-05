@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import user from './userReducer'
+import users from './userReducer'
 import media from './mediaReducer'
-import message from './messageReducer'
+import messages from './messageReducer'
 
 const rootReducer = combineReducers({
-  user, media, message,
+  users, media, messages,
 })
 
 export default rootReducer
