@@ -23,6 +23,17 @@ const api = {
     return data
   },
 
+  async getUserByName(userId) {
+    const req = await fetch(`http://localhost:3000/user/${userId}`, {
+      method: 'GET',
+      accept: 'application/json',
+      origin: ['*'],
+    })
+
+    const data = await req.json()
+    return data
+  },
+
   async putUserUpdate(updatedUser) {
     const req = await fetch(`http://localhost:3000/updateUser`, {
       method: 'PUT',
