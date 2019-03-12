@@ -10,7 +10,7 @@ const StyledUserTable = styled.table`
   align       : center;
   width       : 70%;
   border-style: solid;
-  border-color: #1C61C7;
+  border-color: #1C61C6;
   margin      : auto;
 `
 
