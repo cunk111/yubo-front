@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import * as userActions from '../../actions/userActions'
 
@@ -15,15 +15,20 @@ const StyledUserTable = styled.table`
 `
 
 class UserTable extends React.Component {
-  componentDidMount() {
-    console.log(this.props.userActions.getUserList(20, 0))
-    // this.props.userActions //.getUserList(20, 0)
+  constructor(props) {
+    super(props)
+    this.handleUpdate = this.handleUpdate.bind(this)
   }
-  handleClick(e) {
-    console.log('event', e)
+  componentDidMount() {
+    console.log(this.props)
+  }
+  handleClick(id) {
+    console.log('event', id.target)
+  }
+  handleUpdate() {
+    this.props.userActions.getUserList(20, 1)
   }
   render() {
-    console.log(this.props)
     try {
       return (
         <StyledUserTable className='table table-hover'>
@@ -39,7 +44,6 @@ class UserTable extends React.Component {
           <tbody>
             {this.props.users.map(elt =>
               (<tr key={elt.id} onClick={this.handleClick}>
-                <th scope='col'>{elt.id}</th>
                 <th scope='col'>{elt.username}</th>
                 <th scope='col'>{elt.city}</th>
                 <th scope='col'>{elt.country}</th>
@@ -47,6 +51,7 @@ class UserTable extends React.Component {
                   (<th scope='col'>cross.svg</th>) : (<th scope='col'>check.svg</th>)}
               </tr>))}
           </tbody>
+          <button onClick={this.handleUpdate}>update</button>
         </StyledUserTable>
       )
     } catch (e) {
@@ -56,16 +61,16 @@ class UserTable extends React.Component {
   }
 }
 
-UserTable.propTypes = {
-  userActions: PropTypes.objectOf(PropTypes.func).isRequired,
-  users: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    isDeleted: PropTypes.bool,
-    name: PropTypes.string,
-    username: PropTypes.string,
-    city: PropTypes.string,
-  })).isRequired,
-}
+// UserTable.propTypes = {
+//   userActions: PropTypes.objectOf(PropTypes.func).isRequired,
+//   users: PropTypes.arrayOf(PropTypes.shape({
+//     id: PropTypes.number,
+//     isDeleted: PropTypes.bool,
+//     name: PropTypes.string,
+//     username: PropTypes.string,
+//     city: PropTypes.string,
+//   })).isRequired,
+// }
 
 const mapStateToProps = state => ({
   users: state.users,

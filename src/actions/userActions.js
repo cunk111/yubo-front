@@ -6,11 +6,14 @@ import { userActions } from './actionTypes'
 // TODO - move to config file
 const BASE_URL = 'http://localhost:3000'
 
-export const receiveUsers = users =>
+const receiveUsers = users =>
   ({ type: userActions.RECEIVE_USERS, users })
 
-export const receiveUser = user =>
+const receiveUser = user =>
   ({ type: userActions.RECEIVE_USER, user })
+
+const updateUser = user =>
+  ({ type: userActions.UPDATE_USER, user })
 
 export const getUserList = (qty, page) => dispatch => axios({
   method: 'GET',
@@ -29,7 +32,7 @@ export const getUserById = userId => dispatch => axios({
   origin: ['*'],
 })
   .then(response => response.data)
-  .then(json => dispatch(receiveUsers(json)))
+  .then(json => dispatch(receiveUser(json)))
 
 //
 export const getUserByName = userName => dispatch => axios({
@@ -50,4 +53,4 @@ export const putUserUpdate = updatedUser => dispatch => axios({
   body: JSON.stringify(updatedUser),
 })
   .then(response => response.data)
-  .then(json => dispatch(receiveUsers(json)))
+  .then(json => dispatch(updateUser(json)))

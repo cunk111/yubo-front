@@ -3,6 +3,7 @@ export const userActions = {
   FETCH_USERS: 'FETCH_USERS',
   RECEIVE_USERS: 'RECEIVE_USERS',
   RECEIVE_USER: 'RECEIVE_USER',
+  UPDATE_USER: 'UPDATE_USER',
 }
 
 // NOTE - put media actions below

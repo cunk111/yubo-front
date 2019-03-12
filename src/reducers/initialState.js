@@ -7,6 +7,6 @@ export default {
     city: 'Louvigné du désert',
     country: 'France',
   }],
-  messages: [],
-  media: [],
+  messages: ['titi', 'toto', 'tutu'],
+  media: [3, 4, 5],
 }
