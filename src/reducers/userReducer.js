@@ -1,10 +1,11 @@
 import initialState from './initialState'
 import { userActions } from '../actions/actionTypes'
 
-const normalizeState = (state, action) => {
-  console.log({ state })
-  console.log({ action })
-}
+// TODO - if ever, consider using https://github.com/paularmstrong/normalizr
+// const normalizeState = (state, action) => {
+//   console.log({ state })
+//   console.log({ action })
+// }
 
 export default function users(state = initialState, action) {
   let newState
@@ -20,7 +21,7 @@ export default function users(state = initialState, action) {
     return action
   case userActions.RECEIVE_USERS:
     newState = action.users
-    console.log('RECEIVE_USERS Action', normalizeState(state, action))
+    console.log('RECEIVE_USERS Action')
     return newState
   default:
     return state
