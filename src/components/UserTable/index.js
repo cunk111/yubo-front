@@ -19,15 +19,20 @@ class UserTable extends React.Component {
     super(props)
     this.handleUpdate = this.handleUpdate.bind(this)
   }
+
   componentDidMount() {
     console.log(this.props)
   }
+
   handleClick(id) {
     console.log('event', id.target)
   }
+
   handleUpdate() {
-    this.props.userActions.getUserList(20, 1)
+    // this.props.userActions.getUserList(20, 1)
+    this.props.userActions.getUserList(20, 0)
   }
+
   render() {
     try {
       return (
@@ -42,14 +47,15 @@ class UserTable extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.users.map(elt =>
-              (<tr key={elt.id} onClick={this.handleClick}>
+            {this.props.users.map(elt => (
+              <tr key={elt.id} onClick={this.handleClick}>
                 <th scope='col'>{elt.username}</th>
                 <th scope='col'>{elt.city}</th>
                 <th scope='col'>{elt.country}</th>
                 {elt.isDeleted ?
                   (<th scope='col'>cross.svg</th>) : (<th scope='col'>check.svg</th>)}
-              </tr>))}
+              </tr>
+            ))}
           </tbody>
           <button onClick={this.handleUpdate}>update</button>
         </StyledUserTable>

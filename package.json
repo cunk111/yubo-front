@@ -195,5 +195,8 @@
     "array-flatten": "2.1.1",
     "statuses": "1.4.0",
     "ipaddr.js": "1.8.1"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^17.1.0"
   }
 }

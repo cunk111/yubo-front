@@ -6,14 +6,11 @@ import { userActions } from './actionTypes'
 // TODO - move to config file
 const BASE_URL = 'http://localhost:3000'
 
-const receiveUsers = users =>
-  ({ type: userActions.RECEIVE_USERS, users })
+const receiveUsers = users => ({ type: userActions.RECEIVE_USERS, users })
 
-const receiveUser = user =>
-  ({ type: userActions.RECEIVE_USER, user })
+const receiveUser = user => ({ type: userActions.RECEIVE_USER, user })
 
-const updateUser = user =>
-  ({ type: userActions.UPDATE_USER, user })
+const updateUser = user => ({ type: userActions.UPDATE_USER, user })
 
 export const getUserList = (qty, page) => dispatch => axios({
   method: 'GET',
