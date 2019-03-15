@@ -21,7 +21,6 @@ ReactDOM.render(
     <Router history={history}>
       <Route exact path='/' component={App} />
     </Router>
-    {/* <App /> */}
   </Provider>,
   document.getElementById('root'),
 )
