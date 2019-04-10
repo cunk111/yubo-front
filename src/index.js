@@ -1,11 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 // import 'babel-polyfill'
 import { Router, Route } from 'react-router-dom'
-import createHistory from 'history/createBrowserHistory'
+import { createBrowserHistory } from 'history'
 
 import configureStore from './store/configureStore'
 import './index.css'
@@ -14,7 +14,7 @@ import * as serviceWorker from './serviceWorker'
 
 const store = configureStore()
 // TODO implement history
-const history = createHistory()
+const history = createBrowserHistory()
 
 ReactDOM.render(
   <Provider store={store}>

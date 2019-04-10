@@ -7,14 +7,15 @@ import { userActions } from '../actions/actionTypes'
 //   console.log({ action })
 // }
 
-export default function users(state = initialState, action) {
+
+export default function users(state = initialState.users, action) {
   let newState
   switch (action.type) {
   case userActions.FETCH_USERS:
     console.log('FETCH_USERS Action')
     return action
-  case userActions.FETCH_USER:
-    console.log('FETCH_USERS Action')
+  case userActions.RECEIVE_USER:
+    console.log('RECEIVE_USER Action')
     return action
   case userActions.UPDATE_USER:
     console.log('FETCH_USERS Action')

@@ -23,11 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
@@ -194,9 +191,19 @@
     "util": "0.10.4",
     "array-flatten": "2.1.1",
     "statuses": "1.4.0",
-    "ipaddr.js": "1.8.1"
+    "ipaddr.js": "1.8.1",
+    "fsevents": "1.2.7",
+    "normalize-path": "3.0.0",
+    "make-dir": "2.1.0",
+    "mimic-fn": "2.0.0",
+    "tough-cookie": "2.5.0",
+    "get-stream": "4.1.0",
+    "lru-cache": "5.1.1",
+    "p-is-promise": "2.0.0"
   },
   "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
     "eslint-config-airbnb": "^17.1.0"
   }
 }

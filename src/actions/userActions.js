@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { userActions } from './actionTypes'
 
-// TODO - conditionnal dev/prod
+// TODO - condition dev/prod
 // TODO - move to config file
 const BASE_URL = 'http://localhost:3000'
 
